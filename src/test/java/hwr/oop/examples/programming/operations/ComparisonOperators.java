@@ -11,7 +11,7 @@ class ComparisonOperators {
     @Test
     @DisplayName("1 < 2 is true")
     void lessThan_OneLessThanTwo_IsTrue() {
-        boolean ltResult = 1 < 2;
+        boolean ltResult = true;
         assertThat(ltResult).isTrue();
     }
 
