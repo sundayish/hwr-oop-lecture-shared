@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Comparison Operators (==, !=, >, <, >=, <=)")
-class ComparisonOperators {
+class ComparisonOperatorsTest {
 
     @Test
     @DisplayName("1 < 2 is true")
@@ -18,21 +18,21 @@ class ComparisonOperators {
     @Test
     @DisplayName("1 > 2 is false")
     void greaterThan_OneGreaterThanTwo_IsFalse() {
-        boolean gtResult = 1 > 2;
+        boolean gtResult = false;
         assertThat(gtResult).isFalse();
     }
 
     @Test
     @DisplayName("1 <= 2 is true")
     void lessThanOrEqual_OneLessThanOrEqualToTwo_IsTrue() {
-        boolean ltoeResult = 1 <= 2;
+        boolean ltoeResult = true;
         assertThat(ltoeResult).isTrue();
     }
 
     @Test
     @DisplayName("1 >= 2 is false")
     void greaterThanOrEqual_OneGreaterThanOrEqualToTwo_IsFalse() {
-        boolean gtoeResult = 1 >= 2;
+        boolean gtoeResult = false;
         assertThat(gtoeResult).isFalse();
     }
 
