@@ -3,6 +3,7 @@ package hwr.oop.examples.imperative.programming;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ExceptionsTest {
@@ -93,13 +94,22 @@ class ExceptionsTest {
     @Test
     void exceptionExample_ThrowsCheckedException_CanBeCaught() {
         ExceptionsExample example = new ExceptionsExample();
-        fail("Test not yet implemented");
+        try {
+            example.throwCheckedException();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     void exceptionExample_ThrowsUncheckedException_CanBeCaught() {
         ExceptionsExample example = new ExceptionsExample();
-        fail("Test not yet implemented");
+        example.throwUncheckedException();
+        try {
+            fail();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
     }
 
 }
