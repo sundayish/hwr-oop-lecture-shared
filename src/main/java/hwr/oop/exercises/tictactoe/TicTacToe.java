@@ -7,7 +7,6 @@ class TicTacToe {
     static int[][] board;
     public boolean circleSet;
     public boolean crossSet;
-
     int pointA;
     int pointB;
     int mode;
@@ -52,7 +51,8 @@ class TicTacToe {
                     sum = board[i][0] + board[i][1] + board[i][2];
                 else if ((board[0][i] == board[1][i]) && (board[0][i] == board[2][i]))
                     sum1 = board[0][i] + board[1][i] + board[2][i];
-                checkWin(sum, sum1, mode);
+
+                if (checkWin(sum, sum1, mode)) return true;
             }
 
             // diagonal wins
@@ -61,7 +61,7 @@ class TicTacToe {
             else if (board[0][2] == board[1][1] && board[0][2] == board[2][0])
                 sum1 = board[0][2] + board[1][1] + board[2][0];
 
-            checkWin(sum, sum1, mode);
+            if (checkWin(sum, sum1, mode)) return true;
 
         } else if (mode == 4) {
             for (int i = 0; i < 4; i++) {
@@ -69,7 +69,8 @@ class TicTacToe {
                     sum = board[i][0] + board[i][1] + board[i][2] + board[i][3];
                 else if ((board[0][i] == board[1][i]) && (board[0][i] == board[2][i]) && (board[0][i] == board[3][i]))
                     sum1 = board[0][i] + board[1][i] + board[2][i];
-                checkWin(sum, sum1, mode);
+
+                if (checkWin(sum, sum1, mode)) return true;
             }
 
             // diagonal wins
@@ -77,7 +78,8 @@ class TicTacToe {
                 sum = board[0][0] + board[1][1] + board[2][2] + board[3][3];
             else if (board[0][3] == board[1][2] && board[2][1] == board[3][0] && board[1][2] == board[2][1])
                 sum1 = board[0][3] + board[1][2] + board[2][1] + board[3][0];
-            checkWin(sum, sum1, mode);
+
+            if (checkWin(sum, sum1, mode)) return true;
         }
         return false;
     }
