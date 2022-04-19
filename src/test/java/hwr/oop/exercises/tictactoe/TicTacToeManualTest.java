@@ -16,6 +16,8 @@ class TicTacToeManualTest {
     Scanner in;
     Map<Integer, Character> visualCues;
 
+    public int currentTurn = 0;
+
     @BeforeEach
     void setUp() {
         game = new TicTacToe();
@@ -27,13 +29,15 @@ class TicTacToeManualTest {
     @Test
     //@Disabled("manual test")
     void playUntilGameOver() {
-        int currentTurn = 0;
         while (!game.isGameOver()) {
             playMoveNumber(currentTurn);
             printCurrentStateOfGame();
             currentTurn++;
         }
         out.println("Game over!");
+        out.println("--------------");
+        game.clearBoard();
+        playUntilGameOver();
     }
 
     void initializeVisualCues() {
