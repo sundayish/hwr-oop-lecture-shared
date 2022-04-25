@@ -142,4 +142,61 @@ class TicTacToeTest {
         }
     }
 
+    @Test
+    void isGameOver_finishedGame_stop() {
+        TicTacToe game = new TicTacToe(4);
+        game.setCross(0, 0);
+        game.setCircle(0, 1);
+        game.setCross(1, 0);
+        game.setCircle(1, 1);
+        game.setCross(2, 0);
+        game.setCircle(2,1);
+        game.setCross(3,0);
+
+        boolean over = game.isGameOver();
+
+        assertThat(over).isTrue();
+    }
+
+    @Test
+    void isGameOver_threeInARowIsNotAWin() {
+        TicTacToe game = new TicTacToe(4);
+        game.setCross(0, 0);
+        game.setCircle(0, 1);
+        game.setCross(1, 0);
+        game.setCircle(1, 1);
+        game.setCross(2, 0);
+
+        boolean over = game.isGameOver();;
+
+        assertThat(over).isFalse();
+    }
+
+    @Test
+    void isBoardDraw() {
+        TicTacToe game = new TicTacToe(3);
+        game.setCross(0, 1);
+        game.setCircle(0, 0);
+        game.setCross(1, 1);
+        game.setCircle(2, 1);
+        game.setCross(1, 0);
+        game.setCircle(0, 2);
+        game.setCross(2, 0);
+        game.setCircle(1, 2);
+        game.setCross(2,2);
+
+        boolean over = game.isGameOver();
+
+        assertThat(over).isTrue();
+    }
+
+    @Test
+    void isClearBoard() {
+        TicTacToe game = new TicTacToe(3);
+        game.setCross(0, 1);
+
+        game.clearBoard();
+        assertThat(game.getValueAt(0,1) == 0).isTrue();
+    }
+
 }

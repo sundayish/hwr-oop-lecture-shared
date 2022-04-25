@@ -40,12 +40,25 @@ class TicTacToe {
             throw new RuntimeException("You made an illegal move!");
     }
 
-    boolean isGameOver() {
+    boolean isfullBoard() {
+        for (int[] ints : board) {
+            for (int anInt : ints) {
+                if (anInt == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
+    boolean isGameOver() {
+        if (isfullBoard()) {
+            return true;
+        }
         // vertical, horizontal wins
         int sum = 0;
         int sum1 = 0;
-        if (mode == 3){
+        if (mode == 3) {
             for (int i = 0; i < 3; i++) {
                 if ((board[i][0] == board[i][1]) && (board[i][0] == board[i][2]))
                     sum = board[i][0] + board[i][1] + board[i][2];
@@ -61,14 +74,14 @@ class TicTacToe {
             else if (board[0][2] == board[1][1] && board[0][2] == board[2][0])
                 sum1 = board[0][2] + board[1][1] + board[2][0];
 
-            if (checkWin(sum, sum1, mode)) return true;
+            return checkWin(sum, sum1, mode);
 
         } else if (mode == 4) {
             for (int i = 0; i < 4; i++) {
                 if ((board[i][0] == board[i][1]) && (board[i][0] == board[i][2]) && (board[i][0] == board[i][3]))
                     sum = board[i][0] + board[i][1] + board[i][2] + board[i][3];
                 else if ((board[0][i] == board[1][i]) && (board[0][i] == board[2][i]) && (board[0][i] == board[3][i]))
-                    sum1 = board[0][i] + board[1][i] + board[2][i];
+                    sum1 = board[0][i] + board[1][i] + board[2][i] + board[3][i];
 
                 if (checkWin(sum, sum1, mode)) return true;
             }
@@ -79,7 +92,7 @@ class TicTacToe {
             else if (board[0][3] == board[1][2] && board[2][1] == board[3][0] && board[1][2] == board[2][1])
                 sum1 = board[0][3] + board[1][2] + board[2][1] + board[3][0];
 
-            if (checkWin(sum, sum1, mode)) return true;
+            return checkWin(sum, sum1, mode);
         }
         return false;
     }
@@ -101,5 +114,6 @@ class TicTacToe {
             Arrays.fill(ints, 0);
         }
     }
+
 
 }
